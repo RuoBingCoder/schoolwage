@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/navigateone.css}"/>
+</head>
+<body>
+<div class="navigateone">
+    <div class="row">
+
+        <h2 style="margin-left: 40%; margin-top: 30px"><font color="#f0ffff">学校工资管理系统</font></h2>
+    </div>
+
+    <div class="input-group col-md-2" style="margin-left:70%; margin-bottom: 20px ; height: 30px; ">
+        <input type="text" class="form-control" placeholder="请输入员工编号" style="width: 20px"/>
+        <span class="input-group-btn">
+               <button class="btn btn-info btn-search">查找</button>
+                    </span>
+    </div>
+</div>
+<div class="container" style="width: 30%">
+    <form action="/user/" th:action="@{/user}" method="post" th:object="${userModel.Teacher}" role="form">
+
+        <div class="form-group">
+            <!--<br>员工编号：-->
+            <br>
+
+            <input type="text" name="Tno" class="form-control" th:required="required"
+                   th:value="*{Tno}"
+                   placeholder="员工编号："/>
+
+        </div>
+        <div class="form-group">
+
+            <!--<br>员工名：-->
+            <input type="text" name="Tname" th:value="*{Tname}" th:required="required" class="form-control"
+                   placeholder="员工名："/>
+        </div>
+        <div class="form-group">
+            <!--<br> 性别：-->
+            <input type="text" name="Tsex" th:value="*{Tsex}" th:required="required" class="form-control"
+                   placeholder="性别："/>
+
+        </div>
+        <div class="form-group">
+
+            <!--<br>年龄：-->
+            <input type="text" name="Tage" th:value="*{Tage}" th:required="required" class="form-control"
+                   placeholder="年龄："/>
+        </div>
+        <div class="form-group">
+
+            <!--<br>部门：-->
+            <input type="text" name="Depart" th:value="*{Depart}" th:required="required" class="form-control"
+                   placeholder="部门："/>
+        </div>
+        <div class="form-group">
+
+            <!--<br>职称：-->
+            <input type="text" name="Title" th:value="*{Title}" th:required="required" class="form-control"
+                   placeholder="职称："/>
+            <br>
+
+        </div>
+
+
+        <input type="submit" class="btn btn-primary btn-sm btn-block" value="提交"/>
+
+
+    </form>
+</div>
+</body>
+</html>
+<!--<div class="container"> 导航栏
+       <ul class="nav navbar-light">
+           <li class="nav-item">
+               <a class="nav-link active" href="#"><font color="#f0ffff">职工信息</font></a>
+           </li>
+           <li class="nav-item">
+               <a class="nav-link" href="#"><font color="#f0ffff">职称变更</font></a>
+           </li>
+           <li class="nav-item">
+               <a class="nav-link" href="#"><font color="#f0ffff">考勤</font></a>
+           </li>
+           <li class="nav-item">
+               <a class="nav-link " href="#"><font color="#f0ffff">基本工资</font></a>
+           </li>
+           <li class="nav-item">
+               <a class="nav-link " href="#"><font color="#f0ffff">工资表</font></a>
+           </li>
+
+       </ul>
+   </div>
+</div>-->

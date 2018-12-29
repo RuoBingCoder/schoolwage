@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+
+    <link rel="stylesheet" th:href="@{/css/navigateone.css}"/>
+</head>
+<body>
+<div class="navigateone">
+    <div class="row">
+
+        <h2 style="margin-left: 40%; margin-top: 30px"><font color="#f0ffff">学校工资管理系统</font></h2>
+    </div>
+
+    <!-- <p style="margin-left: 10%; position: absolute">
+         <a class="btn btn-info btn-sm" href="/user/form.html" th:href="@{user/from}" role="button">创建用户</a>
+     </p>-->
+    <div class="input-group col-md-2" style="margin-left:70%; margin-bottom: 20px ; height: 30px; ">
+        <input type="text" class="form-control" placeholder="请输入员工编号" style="width: 20px"/>
+        <span class="input-group-btn">
+               <button class="btn btn-info btn-search">查找</button>
+                    </span>
+
+    </div>
+
+
+</div>
+<div class="container blog-content-container">
+
+    <br>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <td>职工号</td>
+            <td>加班次数</td>
+            <td>缺勤次数</td>
+            <td>月份</td>
+            <td>用户操作</td>
+        </tr>
+
+        </thead>
+        <tbody>
+
+        <tr th:each="attendance:${attendModel.attendance}">
+
+            <td th:text="${attendance.Tno}"></td>
+            <td th:text="${attendance.Overtime}"></td>
+            <td th:text="${attendance.Absence}"></td>
+            <td th:text="${attendance.Dates}"></td>
+            <td>
+                <a th:href="@{'/attendance/modify/'+${attendance.Tno}}">
+                    <button class="btn btn-danger btn-group-sm">修改</button>
+                </a>
+
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

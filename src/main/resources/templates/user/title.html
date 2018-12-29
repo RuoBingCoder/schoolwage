@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container blog-content-container">
+    <div class="row">
+
+        <h2 th:text="${userModel.title}">Welcome
+            to jianlei.com</h2>
+
+    </div>
+
+    <div class="row">
+        <!--<p>
+            <a class="btn btn-primary" href="/users/form.html" th:href="@{users/from}" role="button">创建用户</a>
+        </p>&ndash;&gt;-->
+
+
+        <table class="table table-hover">
+            <thead>
+
+            <tr>
+
+                <td>员工编号</td>
+                <td>之前的职称</td>
+                <td>现职称</td>
+                <td>职位变更的月份</td>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:if="${userModel.listUser.size()} eq 0">
+                <td colspan="3">没有用户信息！</td>
+            </tr>
+
+            <tr th:each="Change:${userModel.listUser}">
+
+
+                <td th:text="${Change.Tno}"></td>
+                <td th:text="${Change.Title1 }"></td>
+                <td th:text="${Change.Title2}"></td>
+                <td th:text="${Change.Dates }"></td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+</body>
+</html>

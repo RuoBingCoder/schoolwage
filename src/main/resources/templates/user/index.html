@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <!--<link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <script type="text/javascript" th:href="@{/js/bootstrap.min.js}"/>
+    <script type="text/javascript" th:href="@{/js/jquery-3.1.1.min.js}"/>-->
+    <link rel="stylesheet" th:href="@{/css/navigateone.css}"/>
+</head>
+<body>
+
+
+<div class="navigateone">
+    <div class="row">
+
+        <h2 style="margin-left: 40%; margin-top: 30px"><font color="#f0ffff">学校工资管理系统</font></h2>
+    </div>
+
+
+</div>
+<div class="container blog-content-container">
+
+
+    <br>
+    <table class="table table-hover">
+        <thead>
+
+        <tr>
+
+
+            <td>员工名</td>
+
+
+        </tr>
+        </thead>
+        <tbody>
+
+
+        <tr th:each="message:${messageModel.message}">
+
+
+            <!--<td><a href="/title.html" th:text="${Teacher.Tname}" th:href="@{'/user/'+${Teacher.Tno}}"/></td>-->
+            <td th:text="${message.Tname}"></td>
+
+
+        </tbody>
+
+    </table>
+</div>
+</div>
+
+
+</body>
+
+
+</html>

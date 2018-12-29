@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!--<script th:href="@{/jquery/jquery-3.3.1.min.js}"/>-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <!--<script th:href="@{/jquery/jquery-3.3.1.min.js}"/>-->
+    <!--&lt;!&ndash;<link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>-->
+    <!--<script type="text/javascript" th:href="@{/js/bootstrap.min.js}"/>-->
+    <!--<script type="text/javascript" th:href="@{/js/jquery-3.1.1.min.js}"/>&ndash;&gt;-->
+    <link rel="stylesheet" th:href="@{/css/navigateone.css}"/>
+</head>
+<body>
+
+
+<div class="navigateone">
+    <div class="container">
+        <ul class="nav navbar-light">
+            <li class="nav-item">
+                <a class="nav-link" href="/user/form.html" th:href="@{user/from}"><font color="#f0ffff">创建用户</font></a>
+            </li>
+           <!-- <li class="nav-item">
+                <a class="nav-link" href="/title/from.html" th:href="@{title/from}"> <font color="#f0ffff">创建职称信息</font></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><font color="#f0ffff">创建考勤信息</font></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="#"><font color="#f0ffff">创建基本工资信息</font></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="#"><font color="#f0ffff">创建工资信息</font></a>
+            </li>
+-->
+        </ul>
+
+
+    </div>
+    <div class="row">
+
+        <h2 style="margin-left: 40%; margin-top: 30px"><font color="#f0ffff">学校工资管理系统</font></h2>
+    </div>
+
+    <!--<p style="margin-left: 10%; position: absolute">
+        <a class="btn btn-info btn-sm" href="/user/form.html" th:href="@{user/from}" role="button">创建用户</a>
+    </p>-->
+    <form action="/user/" th:action="@{/user/search}" method="post">
+        <div class="input-group col-md-2" style="margin-left:70%; margin-bottom: 20px ; height: 30px; ">
+
+            <input type="text" class="form-control" name="Tno" th:value="*{Tno}" placeholder="请输入员工编号"
+                   style="width: 20px"/>
+            <span class="input-group-btn">
+               <button class="btn btn-info btn-search" type="submit">查找</button>
+                    </span>
+
+        </div>
+    </form>
+
+</div>
+<div class="container blog-content-container">
+
+
+    <br>
+    <table class="table table-hover">
+        <thead>
+
+        <tr>
+
+            <td>员工编号</td>
+            <td>员工名</td>
+            <td>性别</td>
+            <td>年龄</td>
+            <td>部门</td>
+            <td>职称</td>
+            <td>用户操作</td>
+
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:if="${userModel.Teacher.size()} eq 0">
+            <td colspan="3">没有用户信息！</td>
+        </tr>
+
+        <tr th:each="Teacher:${userModel.Teacher}">
+
+
+            <td th:text="${Teacher.Tno}"></td>
+            <!--<td><a href="/title.html" th:text="${Teacher.Tname}" th:href="@{'/user/'+${Teacher.Tno}}"/></td>-->
+            <td th:text="${Teacher.Tname}"></td>
+            <td th:text="${Teacher.Tsex}"></td>
+            <td th:text="${Teacher.Tage}"></td>
+            <td th:text="${Teacher.Depart}"></td>
+            <td th:text="${Teacher.Title}"></td>
+            <!--<td><a href="/view.html" th:text="${user.name}" th:href="@{'/users/'+${user.id}}"/></td>-->
+            <td><a th:href="@{'/user/modify/'+${Teacher.Tno}}">
+                <button class="btn btn-warning btn-sm">修改用户信息</button>
+
+            </a>
+                <a th:href="@{'/title/inquire/'+${Teacher.Tno}}">
+                    <button class="btn btn-primary btn-sm">职称变化</button>
+
+                </a>
+                <a th:href="@{'/attendance/inquire/'+${Teacher.Tno}}">
+                    <button class="btn btn-danger btn-sm">考勤</button>
+
+                </a>
+                <a th:href="@{'/basicwage/inquire/'+${Teacher.Title}}">
+                    <button class="btn btn-info btn-sm">基本工资</button>
+
+                </a>
+                <a th:href="@{'/pay/inquire/'+${Teacher.Tno}}">
+                    <button class="btn btn-success btn-sm">工资</button>
+
+                </a>
+            </td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+
+    <div style="text-align: center">
+        <ul class="pagination pagination-lg">
+            <li>&laquo;</li>
+            <li><a th:href="@{#}">1</a></li>
+            <li><a th:href="@{#}">2</a></li>
+            <li><a th:href="@{#}">3</a></li>
+            <li><a th:href="@{#}">4</a></li>
+            <li><a th:href="@{#}">5</a></li>
+            <li>&raquo;</li>
+        </ul>
+    </div>
+</div>
+</body>
+
+
+</html>
+<!-- <div class="container">
+         <ul class="nav navbar-light">
+             <li class="nav-item">
+                 <a class="nav-link" href="#"><font color="#f0ffff">职工信息</font></a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="#"> <font color="#f0ffff">职称变更</font></a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="#"><font color="#f0ffff">考勤</font></a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link " href="#"><font color="#f0ffff">基本工资</font></a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link " href="#"><font color="#f0ffff">工资表</font></a>
+             </li>
+
+         </ul>
+
+         &lt;!&ndash;<button class="btn btn-info btn-search" style="margin-left:3px">添加用户</button>&ndash;&gt;
+ -->
+<!--</div>-->
